@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     private lateinit var adapter: SwipeDeleteViewPagerAdapter
 
     private var currentPage = 0
+    private var newPage = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,15 +39,21 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         swipeDeleteViewPager.setCurrentItem(swipeDeleteViewPager.currentItem + 1, true)
     }
 
-    override fun onPageScrollStateChanged(state: Int) {}
+    override fun onPageScrollStateChanged(state: Int) {
+        when(state) {
+            ViewPager.SCROLL_STATE_IDLE -> {
+                val pagePositionDeffer = newPage - currentPage
+                if (pagePositionDeffer < 0) {
+                    adapter.deleteFragment(newPage + 1)
+                }
+                currentPage = newPage
+            }
+        }
+    }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
     override fun onPageSelected(position: Int) {
-        val pagePositionDeffer = position - currentPage
-        if (pagePositionDeffer < 0) {
-            adapter.deleteFragment(position + 1)
-        }
-        currentPage = position
+        newPage = position
     }
 }
