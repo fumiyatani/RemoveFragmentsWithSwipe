@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.PagerAdapter
 
-class SwipeDeleteViewPager(fragmentManager: FragmentManager, private var fragmentList: ArrayList<Fragment>): FragmentStatePagerAdapter(fragmentManager) {
+class SwipeDeleteViewPagerAdapter(fragmentManager: FragmentManager, private var fragmentList: ArrayList<Fragment>): FragmentStatePagerAdapter(fragmentManager) {
 
 
     override fun getItem(position: Int): Fragment {

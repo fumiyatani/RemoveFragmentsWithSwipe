@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
     private val fragmentList = ArrayList<Fragment>(0)
-    private lateinit var adapter: SwipeDeleteViewPager
+    private lateinit var adapter: SwipeDeleteViewPagerAdapter
 
     private var currentPage = 0
 
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = SwipeDeleteViewPager(supportFragmentManager, fragmentList)
+        adapter = SwipeDeleteViewPagerAdapter(supportFragmentManager, fragmentList)
 
         swipeDeleteViewPager.adapter = adapter
         swipeDeleteViewPager.addOnPageChangeListener(this)
